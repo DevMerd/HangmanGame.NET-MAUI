@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HangmanGame.MAUI.MainPage"
+             Shell.BackgroundColor="#27374D">
+
+    <Grid RowDefinitions=".6*,.4*">
+        <VerticalStackLayout Grid.Row="0"
+                             Spacing="5">
+            <Label FontAttributes="Bold"
+                   FontSize="Large"
+               HorizontalOptions="Center"
+               Text="{Binding GameStatus}" />
+            <Image Source="{Binding CurrentImage}"
+                   HeightRequest="250"
+                   HorizontalOptions="Center"/>
+            <Label FontSize="40"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Text="{Binding Spotlight}" />
+            <Label FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   Text="{Binding Message}"  />
+            <Button x:Name="btnReset"
+                    Clicked="btnReset_Clicked"
+                    HorizontalOptions="Center" 
+                    Text="Reset"
+                    WidthRequest="100"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    BackgroundColor="#27374D"/>
+        </VerticalStackLayout>
+
+        <FlexLayout Grid.Row="1"
+                    Wrap="Wrap"
+                    JustifyContent="SpaceEvenly"
+                    BindableLayout.ItemsSource="{Binding Letters}"
+                    x:Name="LettersContainer">
+
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Button Text="{Binding .}"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            BackgroundColor="#27374D"
+                            Clicked="Button_Clicked"/>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+
+    </Grid>
+</ContentPage>
